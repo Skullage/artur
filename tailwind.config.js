@@ -2,7 +2,14 @@
 export default {
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#486aa5",
+        secondary: "#4e76bb",
+        hoverGray: "#d4d3d3",
+        lightGray: "rgba(255, 255, 255, 0.7)",
+      },
+    },
   },
   plugins: [],
 };

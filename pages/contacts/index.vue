@@ -8,9 +8,9 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="py-40">
+  <div class="py-10">
     <div class="container flex flex-col gap-2 text-xl">
-      <h1 class="uppercase text-4xl font-bold mb-4 text-blue-900">Контакты</h1>
+      <h1 class="title">Контакты</h1>
       <div class="flex gap-4 items-center">
         <Icon name="mdi:phone" />
         <a href="tel:89999999999" class="hover:text-gray-500 duration-300"

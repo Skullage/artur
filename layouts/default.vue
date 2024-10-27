@@ -1,5 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import { useModalsStore } from "~/stores/modal";
+
+const store = useModalsStore();
+const catalogStore = useCatalogStore();
 
 const links = [
   { name: "Главная", link: "/", dropdownLinks: [] },
@@ -11,17 +14,17 @@ const links = [
   {
     name: "Каталог",
     link: "#",
-    dropdownLinks: [
-      { name: "Компрессоры", link: "/catalog/compressor" },
-      { name: "Генераторы", link: "#" },
-    ],
+    dropdownLinks: catalogStore.catalog
+      .filter((el) => el.items.length > 0)
+      .map((el) => ({
+        name: el.title,
+        link: `/catalog/${el.category}`,
+      })),
   },
   { name: "Прайс-листы", link: "/price", dropdownLinks: [] },
   { name: "Доставка и оплата", link: "/delivery", dropdownLinks: [] },
   { name: "Контакты", link: "/contacts", dropdownLinks: [] },
 ];
-
-const store = useModalsStore();
 </script>
 
 <template>
@@ -69,13 +72,14 @@ const store = useModalsStore();
             </div>
           </div>
         </div>
-        <div class="bottom-header py-4 bg-blue-300">
+        <div class="bottom-header py-4 bg-primary relative">
           <nav>
             <ul class="flex gap-4 justify-center items-center">
               <li v-for="(item, index) in links" :key="index">
                 <NuxtLink
                   :to="item.link"
-                  class="hover:text-gray-500 duration-300 font-bold uppercase text-white"
+                  class="hover:text-hoverGray duration-300 font-bold uppercase text-white"
+                  exactActiveClass="text-blue-500"
                   v-if="!item.dropdownLinks.length > 0"
                   >{{ item.name }}</NuxtLink
                 >
@@ -158,7 +162,10 @@ const store = useModalsStore();
         </button>
 
         <div class="max-w-[480px]">
-          <NuxtImg :src="store.image.url" class="w-full block h-auto" />
+          <NuxtImg
+            :src="store.image.url + store.image.array[store.image.curIndex]"
+            class="w-full block h-auto"
+          />
         </div>
 
         <button

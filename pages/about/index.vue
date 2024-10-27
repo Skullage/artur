@@ -8,12 +8,12 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="py-40">
+  <div class="py-10">
     <div class="container flex flex-col gap-2 text-xl">
-      <h1 class="uppercase text-4xl font-bold mb-4 text-blue-900">О нас</h1>
+      <h1 class="title">О нас</h1>
       <NuxtLink
         to="album"
-        class="text-white bg-blue-900 inline-block py-3 px-6 w-fit mb-4 hover:bg-blue-800 duration-300"
+        class="text-white bg-primary inline-block py-3 px-6 w-fit mb-4 hover:brightness-125 duration-300"
         >Фотогалерея</NuxtLink
       >
       <p>

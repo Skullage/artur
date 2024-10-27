@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="slide text-center border border-b-8 border-b-blue-900 py-2">
+  <div class="slide text-center border border-b-8 border-b-primary py-2">
     <h3 class="uppercase font-bold mb-2">{{ props.title }}</h3>
     <NuxtImg
       :src="`/catalog-category/${props.image}`"

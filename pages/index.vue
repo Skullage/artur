@@ -29,28 +29,13 @@ const catalog = [
   { title: "Дачные домики", img: undefined },
 ];
 
-const best = [
-  {
-    title: "Блок-контейнер 'Стандарт'",
-    img: "1.jpg",
-    price: "от 100 ₽",
-    sizes: [
-      { size: "1m", price: "от 100 ₽" },
-      { size: "2m", price: "от 200 ₽" },
-    ],
-  },
-  { title: "Блок-контейнер 'Стандарт зима'", img: "1.jpg", price: "от 1000 ₽" },
-  { title: "Блок-контейнер 'Люкс-2'", img: "1.jpg", price: "от 10000 ₽" },
-  { title: "Блок-контейнер 'Люкс'", img: "1.jpg", price: "от 100000 ₽" },
-  {
-    title: "Модуль для Теплового пункта 2",
-    img: "1.jpg",
-    price: "от 100000 ₽",
-  },
-  { title: "Дачный домик 'Сканди-4'", img: "1.jpg", price: "от 50 ₽" },
-  { title: "Пост охраны 'Люкс АКП'", img: "1.jpg", price: "от 3450 ₽" },
-  { title: "Торговый павильон 'Браун'", img: "1.jpg", price: undefined },
-];
+const name = ref(null);
+const mail = ref(null);
+const question = ref(null);
+
+const submitForm = () => {};
+
+const catalogStore = useCatalogStore();
 </script>
 
 <template>
@@ -127,8 +112,15 @@ const best = [
           },
         }"
       >
-        <SwiperSlide v-for="(item, index) in catalog" :key="index">
-          <catalog-card-category :title="item.title" :image="item.img" />
+        <SwiperSlide
+          v-for="(item, index) in catalogStore.catalog.filter(
+            (el) => el.items.length > 0,
+          )"
+          :key="index"
+        >
+          <NuxtLink :to="'/catalog/' + item.category">
+            <catalog-card-category :title="item.title" :image="item.image" />
+          </NuxtLink>
         </SwiperSlide>
       </Swiper>
     </div>
@@ -155,10 +147,16 @@ const best = [
           },
         }"
       >
-        <SwiperSlide v-for="(item, index) in best" :key="index">
+        <SwiperSlide
+          v-for="(item, index) in catalogStore.getAllItems.filter(
+            (el) => el.hit,
+          )"
+          :key="index"
+        >
           <catalog-card-item
+            :link="`/catalog/${item.id.split('-')[0]}/${item.id.split('-')[1]}`"
             :title="item.title"
-            :image="item.img"
+            :image="item.image[0]"
             :price="item.price"
             :sizes="item.sizes"
           />
@@ -166,7 +164,7 @@ const best = [
       </Swiper>
     </div>
   </div>
-  <div class="bg-blue-900 py-40">
+  <div class="bg-primary py-40">
     <div class="container grid grid-cols-2 gap-4">
       <div class="text-white">
         <h2 class="text-4xl uppercase font-bold mb-8">О компании</h2>
@@ -222,7 +220,8 @@ const best = [
       </div>
       <div>
         <form
-          class="p-8 grid grid-cols-2 gap-4 text-center bg-blue-800 text-white"
+          class="p-8 grid grid-cols-2 gap-4 text-center bg-secondary text-white"
+          @submit.prevent="submitForm"
         >
           <h3 class="text-3xl uppercase font-bold col-span-2 mb-4">
             Напишите нам
@@ -230,31 +229,34 @@ const best = [
           <input
             type="text"
             placeholder="Ваше имя *"
+            v-model="name"
             class="border p-2 text-black"
           />
           <input
-            type="text"
+            type="email"
             placeholder="Ваш E-mail *"
+            v-model="mail"
             class="border p-2 text-black"
           />
           <textarea
             cols="20"
             rows="5"
             placeholder="Ваш вопрос *"
+            v-model="question"
             class="col-span-2 border p-2 text-black"
           ></textarea>
           <p class="col-span-2">
             Отправляя форму, вы соглашаетесь c
             <a
               href="#"
-              class="underline text-gray-500 hover:text-gray-400 duration-300"
+              class="underline text-lightGray hover:text-lightGray/90 duration-300"
               >политикой конфиденциальности</a
             >
           </p>
           <input
             type="submit"
             value="Отправить"
-            class="uppercase col-span-2 border-2 px-2 py-4 cursor-pointer hover:bg-blue-900 duration-500 hover:text-white font-bold hover:border-transparent"
+            class="uppercase col-span-2 border-2 px-2 py-4 cursor-pointer hover:bg-[#5aa3d1] duration-500 font-bold hover:border-transparent"
           />
         </form>
       </div>
@@ -274,6 +276,6 @@ const best = [
 }
 .progress:after {
   content: "";
-  @apply h-1 relative left-0 top-0 block bg-blue-600 w-[80%];
+  @apply h-1 relative left-0 top-0 block bg-[#5aa3d1] w-[80%];
 }
 </style>

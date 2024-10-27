@@ -8,6 +8,12 @@ const count = ref(1);
 const getSum = computed(() => {
   return store.modal.price * count.value;
 });
+
+const name = ref(null);
+const tel = ref(null);
+const mail = ref(null);
+
+const submitForm = () => {};
 </script>
 
 <template>
@@ -15,13 +21,13 @@ const getSum = computed(() => {
     <div class="flex justify-between p-4 bg-gray-300 mb-2 items-center">
       <h4 class="uppercase text-xl font-bold">Купить</h4>
       <button
-        class="flex justify-center items-center"
+        class="flex justify-center items-center hover:text-gray-700"
         @click="store.closeModal()"
       >
         <Icon name="material-symbols:close-rounded" size="1.4em" />
       </button>
     </div>
-    <form class="flex flex-col gap-2 p-4">
+    <form class="flex flex-col gap-2 p-4" @submit.prevent="submitForm">
       <p class="leading-none font-bold text-sm text-gray-700 mb-2">
         Оставьте ваши контактные данные. Наши менеджеры свяжутся с вами для
         уточнения деталей заказа.
@@ -44,15 +50,15 @@ const getSum = computed(() => {
       </label>
       <label>
         Ваше имя
-        <input type="text" readonly />
+        <input type="text" v-model="name" required />
       </label>
       <label>
         Телефон
-        <input type="tel" readonly />
+        <input type="tel" v-model="tel" required />
       </label>
       <label>
         Эл. почта
-        <input type="email" readonly />
+        <input type="email" v-model="mail" required />
       </label>
       <div class="flex gap-1">
         <span class="uppercase font-bold text-xl">Итого:</span>
@@ -70,7 +76,7 @@ const getSum = computed(() => {
       <input
         type="submit"
         value="Отправить заказ"
-        class="uppercase col-span-2 px-2 !py-4 cursor-pointer bg-blue-900 duration-500 text-white font-bold hover:bg-blue-800"
+        class="uppercase col-span-2 px-2 !py-4 cursor-pointer bg-primary duration-500 text-white font-bold hover:brightness-125"
       />
     </form>
   </div>

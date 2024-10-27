@@ -1,11 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useSeoMeta({
+  title: "Доставка и оплата",
+  ogTitle: "Доставка и оплата",
+  description: "Доставка и оплата",
+  ogDescription: "Доставка и оплата",
+});
+</script>
 
 <template>
-  <div class="py-40">
+  <div class="py-10">
     <div class="container flex flex-col gap-2 text-xl">
-      <h1 class="uppercase text-4xl font-bold mb-4 text-blue-900">
-        Доставка и оплата
-      </h1>
+      <h1 class="title">Доставка и оплата</h1>
       <h2 class="font-bold">Самовывоз</h2>
       <p>
         По будням с 9:00 до 16:00. Перед приездом, пожалуйста, предупредите по

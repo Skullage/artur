@@ -18,6 +18,9 @@ const props = defineProps({
     type: Array,
     default: null,
   },
+  link: {
+    type: String,
+  },
 });
 
 const store = useModalsStore();
@@ -26,7 +29,9 @@ const itemSize = ref(null);
 
 const getItemPrice = computed(() => {
   return props.sizes
-    ? props.sizes.find((el) => el.size === itemSize.value)?.price
+    ? props.sizes
+        .find((el) => el.size === itemSize.value)
+        ?.price.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
     : props.price.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 });
 
@@ -45,12 +50,22 @@ onMounted(() => {
 
 <template>
   <div class="slide text-center p-3 border flex flex-col h-full">
-    <NuxtImg
-      :src="`/catalog-category/${props.image}`"
-      class="mx-auto h-40 w-40 object-contain mb-2"
-    />
-    <h3 class="uppercase font-bold mb-8 flex-grow">{{ props.title }}</h3>
-    <select class="w-full mb-8" v-if="props.sizes" v-model="itemSize">
+    <NuxtLink :to="link" class="cursor-pointer">
+      <NuxtImg
+        :src="`/catalog-items/${props.image}`"
+        class="mx-auto h-40 w-40 object-contain mb-2"
+      />
+    </NuxtLink>
+    <NuxtLink :to="link" class="cursor-pointer mb-8 flex-grow"
+      ><h3 class="uppercase font-bold">
+        {{ props.title }}
+      </h3></NuxtLink
+    >
+    <select
+      class="w-full mb-8 block py-2 px-4"
+      v-if="props.sizes"
+      v-model="itemSize"
+    >
       <option
         v-for="(item, index) in props.sizes"
         :key="index"
@@ -60,12 +75,7 @@ onMounted(() => {
       </option>
     </select>
     <p class="font-bold mb-8">{{ getItemPrice }}</p>
-    <button
-      class="uppercase font-bold bg-blue-900 text-white w-full py-3 hover:bg-blue-800 duration-300"
-      @click="showModal"
-    >
-      Купить
-    </button>
+    <buy-button class="w-full" @click="showModal" />
   </div>
 </template>
 
