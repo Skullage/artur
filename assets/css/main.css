@@ -1,5 +1,8 @@
+html, body {
+    overflow-x: hidden;
+}
 .container {
-    @apply max-w-[1200px] m-auto;
+    @apply max-w-[1200px] mx-auto px-4;
 }
 .title {
     @apply uppercase text-4xl font-bold mb-4 text-primary;

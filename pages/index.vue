@@ -41,7 +41,7 @@ const catalogStore = useCatalogStore();
 <template>
   <div>
     <Swiper
-      class="h-[480px] m-auto"
+      class="lg:h-[480px] md:h-[240px] h-[120px] m-auto"
       :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperNavigation]"
       navigation
       :slides-per-view="1"
@@ -65,22 +65,24 @@ const catalogStore = useCatalogStore();
       <SwiperSlide class="slide first-slide relative">
         <a
           href="#"
-          class="rounded-full flex justify-center items-center hover:scale-105 duration-300 right-16 top-2 absolute border-2 p-2"
+          class="rounded-full flex justify-center items-center hover:scale-105 duration-300 right-16 top-2 absolute border-2 p-2 bg-black"
         >
           <Icon name="bx:bxl-vk" size="1.6rem" class="text-white"></Icon>
         </a>
         <a
           href="#"
-          class="rounded-full flex justify-center items-center hover:scale-105 duration-300 right-2 top-2 absolute border-2 p-2"
+          class="rounded-full flex justify-center items-center hover:scale-105 duration-300 right-2 top-2 absolute border-2 p-2 bg-black"
         >
           <Icon name="mdi:instagram" size="1.6rem" class="text-white"></Icon>
         </a>
       </SwiperSlide>
     </Swiper>
   </div>
-  <div>
+  <div class="md:block hidden">
     <div class="container">
-      <div class="grid grid-cols-5 gap-4 -mt-24 relative z-20 mb-20">
+      <div
+        class="grid md:grid-cols-5 grid-cols-3 gap-4 lg:-mt-24 -mt-12 relative z-20 mb-20"
+      >
         <adv-card
           v-for="(item, index) in adv"
           :key="index"
@@ -109,6 +111,17 @@ const catalogStore = useCatalogStore();
           },
           next: {
             translate: ['100%', 0, 0],
+          },
+        }"
+        :breakpoints="{
+          320: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 5,
           },
         }"
       >
@@ -146,6 +159,17 @@ const catalogStore = useCatalogStore();
             translate: ['100%', 0, 0],
           },
         }"
+        :breakpoints="{
+          320: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
+        }"
       >
         <SwiperSlide
           v-for="(item, index) in catalogStore.getAllItems.filter(
@@ -164,8 +188,8 @@ const catalogStore = useCatalogStore();
       </Swiper>
     </div>
   </div>
-  <div class="bg-primary py-40">
-    <div class="container grid grid-cols-2 gap-4">
+  <div class="bg-primary py-20 lg:py-40">
+    <div class="container grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-4">
       <div class="text-white">
         <h2 class="text-4xl uppercase font-bold mb-8">О компании</h2>
         <div class="text-xl flex flex-col gap-4 mb-6">
@@ -207,12 +231,12 @@ const catalogStore = useCatalogStore();
         </div>
         <div class="flex gap-8">
           <div class="flex flex-col basis-1/2">
-            <h3 class="text-5xl font-bold mb-2">> 1000</h3>
+            <h3 class="md:text-5xl text-3xl font-bold mb-2">> 1000</h3>
             <span class="h-1 mb-1 w-1/2 bg-gray-300 progress"></span>
             <p class="leading-none">единиц выпущенной продукции в год</p>
           </div>
           <div class="flex flex-col basis-1/2">
-            <h3 class="text-5xl font-bold mb-2">> 10</h3>
+            <h3 class="md:text-5xl text-3xl font-bold mb-2">> 10</h3>
             <span class="h-1 mb-1 w-1/2 bg-gray-300 progress"></span>
             <p class="leading-none">лет на рынке</p>
           </div>
@@ -267,6 +291,7 @@ const catalogStore = useCatalogStore();
 <style scoped>
 .first-slide {
   background: url("@/assets/images/SLIDERFULL_min.png") no-repeat;
+  background-size: cover;
 }
 .swiper-wrapper {
   align-items: stretch !important;

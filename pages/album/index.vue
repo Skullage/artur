@@ -15,7 +15,9 @@ const store = useModalsStore();
   <div class="py-10">
     <div class="container">
       <h1 class="title">О нас</h1>
-      <div class="grid grid-cols-5 gap-8 items-center">
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center"
+      >
         <NuxtImg
           :src="`/album/${item}`"
           v-for="(item, index) in store.image.images"

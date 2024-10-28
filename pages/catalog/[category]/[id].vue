@@ -56,7 +56,7 @@ useSeoMeta({
           Назад в каталог
         </button>
       </div>
-      <div class="flex gap-4 mb-8">
+      <div class="flex gap-4 mb-8 flex-col md:flex-row">
         <Swiper
           :modules="[
             SwiperAutoplay,
@@ -69,7 +69,7 @@ useSeoMeta({
           :loop="true"
           pagination
           navigation
-          class="w-1/2 basis-1/2 max-h-[450px]"
+          class="md:w-1/2 w-full basis-full md:basis-1/2 max-h-[450px]"
           :autoplay="{
             delay: 3000,
             disableOnInteraction: false,
@@ -93,7 +93,7 @@ useSeoMeta({
               "
           /></SwiperSlide>
         </Swiper>
-        <div class="w-1/2">
+        <div class="md:w-1/2 w-full">
           <h1 class="font-bold text-3xl mb-8 uppercase">
             {{ getItemById.title }}
           </h1>

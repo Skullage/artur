@@ -14,9 +14,9 @@ const props = defineProps({
 <template>
   <div class="card-advantage">
     <div
-      class="py-12 px-8 flex justify-center flex-col items-center h-full text-white font-bold text-lg text-center"
+      class="lg:py-12 py-2 px-8 flex justify-center flex-col items-center h-full text-white font-bold text-md lg:text-lg text-center"
     >
-      <Icon :name="props.icon" size="4rem"></Icon>
+      <Icon :name="props.icon" size="4rem" class="!text-[2em]"></Icon>
       {{ props.title }}
     </div>
   </div>

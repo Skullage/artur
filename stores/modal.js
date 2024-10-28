@@ -12,6 +12,9 @@ export const useModalsStore = defineStore("modals", {
       title: null,
       price: null,
     },
+    menu: {
+      isMobileMenuShow: false,
+    },
     dropdownMenu: {
       isShow: false,
     },
@@ -106,7 +109,7 @@ export const useCatalogStore = defineStore("catalog", {
       {
         title: "Модульные здания",
         image: "2.jpg",
-        category: "modulnye-zdaniya",
+        category: "modulnye_zdaniya",
         items: [
           {
             title: "Модульное здание двухэтажное 2 модуля",
@@ -121,7 +124,7 @@ export const useCatalogStore = defineStore("catalog", {
       {
         title: "Дачные домики",
         image: "3.jpg",
-        category: "dachnye-domiki",
+        category: "dachnye_domiki",
         items: [
           {
             title: 'Дачный домик "Норвегия"',
@@ -157,7 +160,7 @@ export const useCatalogStore = defineStore("catalog", {
       {
         title: "Торговые павильоны",
         image: "4.jpg",
-        category: "torgovye-pavilony",
+        category: "torgovye_pavilony",
         items: [
           {
             title: 'Торговый павильон "Касса-1"',
@@ -172,38 +175,150 @@ export const useCatalogStore = defineStore("catalog", {
       {
         title: "Посты охраны",
         image: "5.jpg",
-        category: "posty-ohrany",
-        items: [],
+        category: "posty_ohrany",
+        items: [
+          {
+            title: 'Пост охраны "ЛЮКС-проходная" (4,5*4,0м)',
+            image: ["24.jpg", "25.jpg"],
+            hit: true,
+            desc:
+              "<p>Каркас: горячекатаный, металлический (швеллер 8 , угол 75*75*5мм)</p>\n" +
+              "<p>Базовая комплектация:</p>\n" +
+              "<p>- Утепление: 100мм минеральная вата</p>\n" +
+              "<p>- Наружная отделка: Профилированный лист, цветной</p>\n" +
+              "<p>- Внутренняя отделка: ЛДСП</p>\n" +
+              "<p>- Дверь входная: металлическая, производство Россия</p>\n" +
+              "<p>- Окно: ПВХ</p>\n" +
+              "<p>- Электрика</p>\n" +
+              "<p>- Линолеум</p>\n" +
+              "<p><strong>Дополнительная комплектация:</strong></p>\n" +
+              "<p>- Сплит-система</p>\n" +
+              "<p>- Обогреватель (электроконвектор)</p>\n" +
+              "<p>- Мебель</p>",
+            price: "450000 ₽",
+            sizes: null,
+          },
+        ],
       },
       {
         title: "Бани",
         image: "6.jpg",
         category: "bani",
-        items: [],
+        items: [
+          {
+            title: 'Баня "ЛЮКС" (6,0*2,3м)',
+            image: [
+              "26.jpg",
+              "27.jpg",
+              "28.jpg",
+              "29.jpg",
+              "29.jpg",
+              "30.jpg",
+              "31.jpg",
+            ],
+            hit: true,
+            desc:
+              "<p>Каркас: металлический</p>\n" +
+              "<p>Базовая комплектация:</p>\n" +
+              "<p>- Утепление: 100мм минеральная вата - комната отдыха / Базальт - парное отделение</p>\n" +
+              "<p>- Наружная отделка: Сайдинг металлический (Огромный выбор цветов)</p>\n" +
+              "<p>- Внутренняя отделка: Вагонка сосна АВ - комната отдыха / Вагонка липа - парное отделение</p>\n" +
+              "<p>- Дверь входная: ПВХ из усиленного профиля</p>\n" +
+              "<p>- Окно: ПВХ</p>\n" +
+              "<p>- Печь на 16м3</p>",
+            price: "549000 ₽",
+            sizes: null,
+          },
+        ],
       },
       {
         title: "Аренда бытовок",
         image: "7.jpg",
-        category: "arenda-bytovok",
-        items: [],
+        category: "arenda_bytovok",
+        items: [
+          {
+            title: 'Блок-контейнер "Стандарт зима"',
+            image: ["32.jpeg", "33.jpeg"],
+            hit: true,
+            desc:
+              "<p>Размер вагончика: 6.0*2.4м</p>\n" +
+              "<p>Каркас: горячекатаный, металлический (швеллер 8 , угол 75*75*5мм)</p>\n" +
+              "<p>Базовая комплектация:</p>\n" +
+              "<p>- Утепление: 100мм минеральная вата</p>\n" +
+              "<p>- Наружная отделка: Профилированный лист оцинкованный</p>\n" +
+              "<p>- Внутренняя отделка: ОСП</p>\n" +
+              "<p>- Дверь входная: металлическая, производство Россия</p>\n" +
+              "<p>- Окно: ПВХ</p>\n" +
+              "<p>- Электрика: светильник - 2шт, розетка - 2шт</p>",
+            price: "549000 ₽",
+            sizes: [
+              { size: "1 месяц", price: "12000 ₽" },
+              { size: "2 месяц", price: "11000 ₽" },
+              { size: "3 месяц и более", price: "10000 ₽" },
+            ],
+          },
+        ],
       },
       {
         title: "Модульные офисы",
         image: "8.jpg",
-        category: "modulnye-ofisy",
-        items: [],
+        category: "modulnye_ofisy",
+        items: [
+          {
+            title: 'Офис модульный "Комфорт" (6,0*3,0м)',
+            image: ["34.jpg", "35.jpg", "36.jpg", "37.jpg"],
+            hit: true,
+            desc:
+              "<p>Каркас: горячекатаный, металлический (швеллер 8 , труба проф 80*80)</p>\n" +
+              "<p>Базовая комплектация:</p>\n" +
+              "<p>- Утепление: 100мм</p>\n" +
+              "<p>- Дверь входная: металлическая, производство Россия</p>\n" +
+              "<p>- Окно: ПВХ</p>\n" +
+              "<p>- Электрика: светильник - 1шт, розетка - 1шт</p>\n" +
+              "<p><strong>Дополнительная комплектация:</strong></p>\n" +
+              "<p>- Сплит-система</p>\n" +
+              "<p>- Обогреватель (электроконвектор)</p>\n" +
+              "<p>- Мебель</p>",
+            price: "329000 ₽",
+            sizes: null,
+          },
+        ],
       },
       {
         title: "Спец. назначения",
         image: "9.jpg",
-        category: "moduli-specialnogo-naznacheniya",
-        items: [],
+        category: "moduli_specialnogo_naznacheniya",
+        items: [
+          {
+            title: "Модуль для насосной станции со съёмной крышей",
+            image: ["38.jpg", "39.jpg", "40.jpg", "41.jpg", "42.jpg"],
+            hit: true,
+            desc:
+              "<p>Модуль для насосной станции со съёмной крышей</p>\n" +
+              "<p>Изготавливаются индивидуально, любых размеров и конфигураций</p>",
+            price: "199000 ₽",
+            sizes: null,
+          },
+        ],
       },
       {
         title: "Хозблоки",
         image: "10.jpg",
         category: "hozbloki",
-        items: [],
+        items: [
+          {
+            title: 'Хозблок "ЛЮКС"',
+            image: ["43.jpg", "44.jpg", "45.jpg", "46.jpg"],
+            hit: true,
+            desc: "<p><span>Изготавливаем любые конфигурации и размеры Хозблоков!</span></p>",
+            price: "329000 ₽",
+            sizes: [
+              { size: "2,0*1,5 м", price: "от 64000 ₽" },
+              { size: "3,0*2,0 м", price: "от 78000 ₽" },
+              { size: "4,0*2,4 м", price: "от 93000 ₽" },
+            ],
+          },
+        ],
       },
     ],
   }),

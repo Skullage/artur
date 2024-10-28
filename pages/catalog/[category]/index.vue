@@ -18,7 +18,7 @@ useSeoMeta({
     <h1 class="uppercase text-4xl font-bold mb-4 text-blue-900">
       {{ getCurrentCategory.title }}
     </h1>
-    <div class="grid grid-cols-4 gap-8">
+    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-8">
       <catalog-card-item
         v-for="(item, index) in getCurrentCategory.items"
         :key="index"

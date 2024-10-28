@@ -13,7 +13,7 @@ const links = [
   },
   {
     name: "Каталог",
-    link: "#",
+    link: "/catalog",
     dropdownLinks: catalogStore.catalog
       .filter((el) => el.items.length > 0)
       .map((el) => ({
@@ -30,55 +30,63 @@ const links = [
 <template>
   <div class="flex flex-col min-h-screen" id="wrapper">
     <header class="min-h-24">
-      <div class="container">
-        <div class="top-header py-4">
-          <div class="container flex justify-between">
+      <div class="top-header py-4">
+        <div class="container flex justify-between">
+          <div>
+            <NuxtImg />
+          </div>
+          <div
+            class="flex gap-4 md:gap-8 items-center flex-col md:flex-row text-sm md:text-md"
+          >
             <div>
-              <NuxtImg />
+              <Icon
+                name="mdi:email"
+                class="align-middle mr-1 text-blue-500"
+                size="1.2em"
+              />
+              <a href="mailto:mail@mail.ru" class="top-header__link"
+                >mail@mail.ru</a
+              >
             </div>
-            <div class="flex gap-8 items-center">
-              <div>
-                <Icon
-                  name="mdi:email"
-                  class="align-middle mr-1 text-blue-500"
-                  size="1.2em"
-                />
-                <a href="mailto:mail@mail.ru" class="top-header__link"
-                  >mail@mail.ru</a
-                >
-              </div>
-              <div>
-                <Icon
-                  name="mdi:phone"
-                  class="align-middle mr-1 text-blue-500"
-                  size="1.2em"
-                />
-                <a href="tel:89999999999" class="top-header__link"
-                  >8 (999) 999-99-99</a
-                >
-              </div>
-              <div>
-                <Icon
-                  name="mdi:map-marker"
-                  class="align-middle mr-1 text-blue-500"
-                  size="1.2em"
-                />
-                <a
-                  href="https://yandex.ru/maps/-/CDXWz--R"
-                  class="max-w-36 leading-none top-header__link"
-                  >г. Октябрьский, ул. Кооперативная, д. 113</a
-                >
-              </div>
+            <div>
+              <Icon
+                name="mdi:phone"
+                class="align-middle mr-1 text-blue-500"
+                size="1.2em"
+              />
+              <a href="tel:89999999999" class="top-header__link"
+                >8 (999) 999-99-99</a
+              >
+            </div>
+            <div>
+              <Icon
+                name="mdi:map-marker"
+                class="align-middle mr-1 text-blue-500"
+                size="1.2em"
+              />
+              <a
+                href="https://yandex.ru/maps/-/CDXWz--R"
+                class="max-w-36 leading-none top-header__link"
+                >г. Октябрьский, ул. Кооперативная, д. 113</a
+              >
             </div>
           </div>
         </div>
-        <div class="bottom-header py-4 bg-primary relative">
-          <nav>
+      </div>
+      <div class="bottom-header py-4 bg-primary relative">
+        <div class="container">
+          <button
+            @click="store.menu.isMobileMenuShow = true"
+            class="close-btn text-white md:hidden"
+          >
+            <Icon name="ci:hamburger" size="3em" />
+          </button>
+          <nav class="hidden md:block">
             <ul class="flex gap-4 justify-center items-center">
               <li v-for="(item, index) in links" :key="index">
                 <NuxtLink
                   :to="item.link"
-                  class="hover:text-hoverGray duration-300 font-bold uppercase text-white"
+                  class="hover:text-hoverGray duration-300 font-bold uppercase text-white text-sm lg:text-md"
                   exactActiveClass="text-blue-500"
                   v-if="!item.dropdownLinks.length > 0"
                   >{{ item.name }}</NuxtLink
@@ -88,6 +96,38 @@ const links = [
                   :links="item.dropdownLinks"
                   :name="item.name"
                   :link="item.link"
+                  class="text-sm lg:text-md"
+                />
+              </li>
+            </ul>
+          </nav>
+          <nav
+            class="fixed md:hidden w-full h-full left-0 top-0 block bg-primary z-20 -translate-y-[1000px] duration-500"
+            :class="{ '!translate-y-0': store.menu.isMobileMenuShow }"
+          >
+            <button
+              class="flex justify-center items-center hover:text-gray-700 absolute right-0 text-white p-4"
+              @click="store.menu.isMobileMenuShow = false"
+            >
+              <Icon name="material-symbols:close-rounded" size="1.4em" />
+            </button>
+            <ul class="flex gap-4 justify-center items-center flex-col h-full">
+              <li v-for="(item, index) in links" :key="index">
+                <NuxtLink
+                  :to="item.link"
+                  class="hover:text-hoverGray duration-300 font-bold uppercase text-white py-8"
+                  exactActiveClass="text-blue-500"
+                  @click="store.menu.isMobileMenuShow = false"
+                  v-if="!item.dropdownLinks.length > 0"
+                  >{{ item.name }}</NuxtLink
+                >
+                <dropdown-menu
+                  v-else
+                  :links="item.dropdownLinks"
+                  :name="item.name"
+                  :link="item.link"
+                  class="text-sm lg:text-md"
+                  @click="store.menu.isMobileMenuShow = false"
                 />
               </li>
             </ul>
@@ -99,7 +139,9 @@ const links = [
       <slot />
     </main>
     <footer class="bg-gray-700 py-20">
-      <div class="container flex gap-8 justify-between !mb-8">
+      <div
+        class="container flex gap-8 justify-between !mb-8 flex-col md:flex-row"
+      >
         <div>
           <h2 class="uppercase mb-4 font-bold text-white">Наш адрес</h2>
           <a href="https://yandex.ru/maps/-/CDXWz--R" class="footer__link"
@@ -155,7 +197,7 @@ const links = [
     >
       <div class="flex justify-center items-center h-full">
         <button
-          class="fixed left-10 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white rounded-full flex justify-center items-center cursor-pointer bg-black/70"
+          class="fixed left-2 md:left-10 text-xs md:text-md top-1/2 -translate-y-1/2 text-gray-300 hover:text-white rounded-full flex justify-center items-center cursor-pointer bg-black/70"
           @click="store.showPrevImage()"
         >
           <Icon name="material-symbols:chevron-left-rounded" size="4em" />
@@ -169,13 +211,13 @@ const links = [
         </div>
 
         <button
-          class="fixed right-10 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white rounded-full flex justify-center items-center cursor-pointer bg-black/70"
+          class="fixed right-2 text-xs md:text-md md:right-10 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white rounded-full flex justify-center items-center cursor-pointer bg-black/70"
           @click="store.showNextImage()"
         >
           <Icon name="material-symbols:chevron-right-rounded" size="4em" />
         </button>
         <button
-          class="fixed right-10 top-10 text-gray-300 hover:text-white rounded-full flex justify-center items-center cursor-pointer bg-black/70 p-2"
+          class="fixed right-2 top-2 md:right-10 md:top-10 text-xs md:text-md text-gray-300 hover:text-white rounded-full flex justify-center items-center cursor-pointer bg-black/70 p-2"
           @click="store.closeBigImage()"
         >
           <Icon name="material-symbols:close-rounded" size="3em" />

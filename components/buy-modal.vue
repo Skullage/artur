@@ -17,7 +17,7 @@ const submitForm = () => {};
 </script>
 
 <template>
-  <div class="bg-white w-1/2">
+  <div class="bg-white md:w-1/2 w-full">
     <div class="flex justify-between p-4 bg-gray-300 mb-2 items-center">
       <h4 class="uppercase text-xl font-bold">Купить</h4>
       <button
