@@ -1,0 +1,1 @@
+import{_ as t}from"./D50s2xRx.js";import{B as e,J as o}from"./B_HYY72J.js";const r={},n={class:"uppercase font-bold bg-primary text-white md:px-8 md:py-4 px-4 py-2 hover:brightness-125 duration-300"};function c(s,_){return e(),o("button",n," Купить ")}const m=t(r,[["render",c]]);export{m as _};
