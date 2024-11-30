@@ -13,8 +13,8 @@ useSeoMeta({
       <h1 class="title">Контакты</h1>
       <div class="flex gap-4 items-center">
         <Icon name="mdi:phone" />
-        <a href="tel:89999999999" class="hover:text-gray-500 duration-300"
-          >8 (999) 999-99-99</a
+        <a href="tel:89270812777" class="hover:text-gray-500 duration-300"
+          >8 (927) 08-12-777</a
         >
       </div>
       <div class="flex gap-4 items-center">
@@ -27,8 +27,10 @@ useSeoMeta({
       </div>
       <div class="flex gap-4 items-center">
         <Icon name="mdi:email" />
-        <a href="mailto:mail@mail.ru" class="hover:text-gray-500 duration-300"
-          >mail@mail.ru</a
+        <a
+          href="mailto:tmk-102@mail.ru"
+          class="hover:text-gray-500 duration-300"
+          >tmk-102@mail.ru</a
         >
       </div>
       <div class="flex gap-4 items-center">

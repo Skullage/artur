@@ -320,6 +320,36 @@ export const useCatalogStore = defineStore("catalog", {
           },
         ],
       },
+      {
+        title: "Изготовление металлоконструкций",
+        image: "11.jpg",
+        category: "izgotovlenie_metallokonstrykciy",
+        items: [
+          {
+            title: "Изготовление металлоконструкций",
+            image: ["47.jpg"],
+            hit: true,
+            desc: "<p><span>Изготавливаем любые металлоконструкции!</span></p>",
+            price: "Договорная",
+            sizes: null,
+          },
+        ],
+      },
+      {
+        title: "Сварка трубопровода",
+        image: "12.jpg",
+        category: "svarka_tryboprovoda",
+        items: [
+          {
+            title: "Сварка трубопровода",
+            image: ["48.jpg"],
+            hit: true,
+            desc: "<p><span>Выполняем сварочные работы трубопровода!</span></p>",
+            price: "Договорная",
+            sizes: null,
+          },
+        ],
+      },
     ],
   }),
   getters: {

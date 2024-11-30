@@ -33,7 +33,7 @@ const links = [
       <div class="top-header py-4">
         <div class="container flex justify-between">
           <div>
-            <NuxtImg />
+            <NuxtLink to="/" class="text-3xl font-bold">ООО "ТМК"</NuxtLink>
           </div>
           <div
             class="flex gap-4 md:gap-8 items-center flex-col md:flex-row text-sm md:text-md"
@@ -44,8 +44,8 @@ const links = [
                 class="align-middle mr-1 text-blue-500"
                 size="1.2em"
               />
-              <a href="mailto:mail@mail.ru" class="top-header__link"
-                >mail@mail.ru</a
+              <a href="mailto:tmk-102@mail.ru" class="top-header__link"
+                >tmk-102@mail.ru</a
               >
             </div>
             <div>
@@ -54,8 +54,8 @@ const links = [
                 class="align-middle mr-1 text-blue-500"
                 size="1.2em"
               />
-              <a href="tel:89999999999" class="top-header__link"
-                >8 (999) 999-99-99</a
+              <a href="tel:89270812777" class="top-header__link"
+                >8 (927) 08-12-777</a
               >
             </div>
             <div>
@@ -150,7 +150,7 @@ const links = [
         </div>
         <div>
           <h2 class="uppercase mb-4 font-bold text-white">Телефоны</h2>
-          <a href="tel:89999999999" class="footer__link">8 (999) 999-99-99</a>
+          <a href="tel:89270812777" class="footer__link">8 (927) 08-12-777</a>
         </div>
         <div>
           <h2 class="uppercase mb-4 font-bold text-white">Время работы</h2>
@@ -159,7 +159,9 @@ const links = [
         </div>
         <div>
           <h2 class="uppercase mb-4 font-bold text-white">Почта</h2>
-          <a href="mailto:mail@mail.ru" class="footer__link">mail@mail.ru</a>
+          <a href="mailto:tmk-102@mail.ru" class="footer__link"
+            >tmk-102@mail.ru</a
+          >
         </div>
         <div>
           <h2 class="uppercase mb-4 font-bold text-white">Наши соцсети</h2>
